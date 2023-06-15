@@ -33,7 +33,7 @@ def to_html(document):
 
 def upload_file(file, paper_type):
     command = f"python3 aclpubcheck-main/aclpubcheck/formatchecker.py --paper_type {paper_type} {file.name}"
-    out = subprocess.run(command, shell=True, capture_output=True, text=True)
+    out = subprocess.run(command, shell=True, stdout=subprocess.PIPE, text=True, stderr=subprocess.STDOUT)
     return to_html(remove_color_codes(out.stdout))
 
 

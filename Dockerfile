@@ -1,15 +1,21 @@
-FROM python:3.9
+FROM ubuntu:22.04
+
+RUN apt-get update && apt-get install -y \
+    python3 \
+    python3-pip \
+    wget \
+    unzip \
+    imagemagick \
+    libmagickwand-dev
 
 WORKDIR .
 
 COPY ./app.py ./app.py
 COPY ./policy.xml ./policy.xml
 
-RUN apt-get update
 RUN wget https://github.com/acl-org/aclpubcheck/archive/refs/heads/main.zip
 RUN unzip main.zip
 RUN cd aclpubcheck-main
-RUN apt-get install libmagickwand-dev
 RUN pip install -e ./aclpubcheck-main
 RUN cp policy.xml /etc/ImageMagick-6/policy.xml
 
