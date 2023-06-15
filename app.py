@@ -1,6 +1,7 @@
 import gradio as gr
 import re
 import subprocess
+import argparse
 
 def remove_color_codes(text):
     color_pattern = re.compile(r'\x1b\[\d+m')
@@ -35,6 +36,7 @@ def upload_file(file, paper_type):
     out = subprocess.run(command, shell=True, capture_output=True, text=True)
     return to_html(remove_color_codes(out.stdout))
 
+
 with gr.Blocks() as demo:
     gr.Markdown("# 📝 ACL Pubcheck tool")
     gr.Markdown("This tool check for errors and validate your **.pdf** paper for ACL venues using the official [aclpubcheck tool](https://github.com/acl-org/aclpubcheck).")
@@ -46,4 +48,11 @@ with gr.Blocks() as demo:
     out = gr.HTML()
     button.click(upload_file, [file_output, dropdown], out)
 
-demo.launch()
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--host', default="0.0.0.0", type=str)
+    parser.add_argument('--port', default=7860, type=int)
+    args = parser.parse_args()
+
+    demo.launch(server_name=args.host, server_port=args.port)

@@ -2,20 +2,19 @@ FROM python:3.9
 
 WORKDIR .
 
-COPY ./requirements.txt ./requirements.txt
 COPY ./app.py ./app.py
 COPY ./policy.xml ./policy.xml
 
 RUN apt-get update
-RUN https://github.com/acl-org/aclpubcheck/archive/refs/heads/main.zip
-RUN unzip /content/main.zip
+RUN wget https://github.com/acl-org/aclpubcheck/archive/refs/heads/main.zip
+RUN unzip main.zip
 RUN cd aclpubcheck-main
 RUN apt-get install libmagickwand-dev
-RUN pip install -e .
+RUN pip install -e ./aclpubcheck-main
 RUN cp policy.xml /etc/ImageMagick-6/policy.xml
 
 RUN cd ..
-RUN pip install --no-cache-dir --upgrade -r requirements.txt
+RUN pip install gradio==3.34.0
 
 
 EXPOSE 7860
