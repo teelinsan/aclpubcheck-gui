@@ -8,7 +8,7 @@ The tool is available online on [Hugging Face Spaces](https://huggingface.co/spa
 Since it is running on a free instance, it might take a while to start if it was inactive for more than 48h.
 Alternatively, you can run it locally by following the instructions in the section `Local Deploy`.
 
-[![Open in Spaces](https://huggingface.co/datasets/huggingface/badges/raw/main/open-in-hf-spaces-md-dark.svg)](https://huggingface.co/spaces/teelinsan/aclpubcheck) [![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/teelinsan/aclpubcheck)
+[![Open in Spaces](https://huggingface.co/datasets/huggingface/badges/raw/main/open-in-hf-spaces-md-dark.svg)](https://huggingface.co/spaces/teelinsan/aclpubcheck) [![Open in Spaces](https://huggingface.co/datasets/huggingface/badges/raw/main/open-in-hf-spaces-md.svg)](https://huggingface.co/spaces/teelinsan/aclpubcheck)
 [![gradio.png](assets%2Fscreen.png)](https://huggingface.co/spaces/teelinsan/aclpubcheck)
 
 ## Local Deploy
