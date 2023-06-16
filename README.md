@@ -4,11 +4,11 @@ ACL Pubcheck GUI is a minimal graphical user interface for the [ACL Pubcheck too
 The tool allows you to check the compliance of your paper with the [ACL conferences](https://www.aclweb.org/) guidelines by simply drag and drop your pdf file on the interface.
 
 ## Usage
-The tool is available online on [Hugging Face Spaces](https://aclpubcheck.herokuapp.com/). You can access it by clicking on the button or image below.
+The tool is available online on [Hugging Face Spaces](https://huggingface.co/spaces/teelinsan/aclpubcheck). You can access it by clicking on the button or image below.
 Since it is running on a free instance, it might take a while to start if it was inactive for more than 48h.
 Alternatively, you can run it locally by following the instructions in the section `Local Deploy`.
 
-[![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/teelinsan/aclpubcheck) [![Open in Spaces](https://huggingface.co/datasets/huggingface/badges/raw/main/open-in-hf-spaces-md-dark.svg)](https://huggingface.co/spaces/teelinsan/aclpubcheck)
+[![Open in Spaces](https://huggingface.co/datasets/huggingface/badges/raw/main/open-in-hf-spaces-md-dark.svg)](https://huggingface.co/spaces/teelinsan/aclpubcheck) [![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/teelinsan/aclpubcheck)
 [![gradio.png](assets%2Fscreen.png)](https://huggingface.co/spaces/teelinsan/aclpubcheck)
 
 ## Local Deploy
