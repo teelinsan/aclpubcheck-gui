@@ -19,4 +19,6 @@ You can then build the image and run the container with the following commands:
 docker build -t aclpubcheck-gui .
 docker run -p 7860:7860 aclpubcheck-gui
 ```
-The application will be available at [http://localhost:7860](http://localhost:7860). You can customize the port number by changing the last line of the Dockerfile and run again the commands above.
+The application will be available at [http://localhost:7860](http://localhost:7860).
+You can customize the port number by changing the last line of the Dockerfile and run again the commands above.
+The application has been tested on an amd64 platform. 
