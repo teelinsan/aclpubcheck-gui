@@ -38,14 +38,22 @@ def upload_file(file, paper_type):
 
 
 with gr.Blocks() as demo:
-    gr.Markdown("# 📝 ACL Pubcheck tool")
-    gr.Markdown("This tool check for errors and validate your **.pdf** paper for ACL venues using the official [aclpubcheck tool](https://github.com/acl-org/aclpubcheck).")
+    header = """
+        <div align="center">
+        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/7/72/Association_for_Computational_Linguistics_logo.svg/2880px-Association_for_Computational_Linguistics_logo.svg.png" alt="acl-logo" width=100px/>
+        <h1>ACL Pubcheck Tool</h1>
+        </div>
+    """
+    gr.HTML(header)
+    gr.Markdown("Drop or upload your paper here to have it checked for [ACL conferences](https://www.aclweb.org/) guidelines.")
     dropdown = gr.Dropdown(
             ["long", "short", "demo", "other"], label="Paper type", value="long"
         )
     file_output = gr.File(file_types=[".pdf"])
     button = gr.Button("Check your PDF!", variant="primary")
     out = gr.HTML()
+    gr.Markdown(
+        "This graphical interface is using the official [aclpubcheck tool](https://github.com/acl-org/aclpubcheck). Check the [repo for more information.](https://github.com/teelinsan/aclpubcheck-gui)")
     button.click(upload_file, [file_output, dropdown], out)
 
 
