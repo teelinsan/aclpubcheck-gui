@@ -3,6 +3,7 @@ import re
 import subprocess
 import argparse
 
+
 def remove_color_codes(text):
     color_pattern = re.compile(r'\x1b\[\d+m')
     clean_text = re.sub(color_pattern, '', text)
@@ -47,15 +48,17 @@ with gr.Blocks() as demo:
     gr.HTML(header)
     gr.Markdown("Drop or upload your paper here to have it checked for [ACL conferences](https://www.aclweb.org/) guidelines.")
     dropdown = gr.Dropdown(
-            ["long", "short", "demo", "other"], label="Paper type", value="long"
-        )
+        ["long", "short", "demo", "other"], label="Paper type", value="long"
+    )
     file_output = gr.File(file_types=[".pdf"])
     button = gr.Button("Check your PDF!", variant="primary")
     out = gr.HTML()
     gr.Markdown(
-        "This graphical interface is using the official [aclpubcheck tool](https://github.com/acl-org/aclpubcheck). Check the [repo for more information.](https://github.com/teelinsan/aclpubcheck-gui)")
-    button.click(upload_file, [file_output, dropdown], out)
+        "This graphical interface is using the official [aclpubcheck tool](https://github.com/acl-org/aclpubcheck). Check the [Github repo for more information.](https://github.com/teelinsan/aclpubcheck-gui)")
+    gr.Markdown(
+        "No data is collected. If you prefer you can also duplicate this Space to run it privately. [![Duplicate Space](https://img.shields.io/badge/-Duplicate%20Space-blue?labelColor=white&style=flat&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAP5JREFUOE+lk7FqAkEURY+ltunEgFXS2sZGIbXfEPdLlnxJyDdYB62sbbUKpLbVNhyYFzbrrA74YJlh9r079973psed0cvUD4A+4HoCjsA85X0Dfn/RBLBgBDxnQPfAEJgBY+A9gALA4tcbamSzS4xq4FOQAJgCDwV2CPKV8tZAJcAjMMkUe1vX+U+SMhfAJEHasQIWmXNN3abzDwHUrgcRGmYcgKe0bxrblHEB4E/pndMazNpSZGcsZdBlYJcEL9Afo75molJyM2FxmPgmgPqlWNLGfwZGG6UiyEvLzHYDmoPkDDiNm9JR9uboiONcBXrpY1qmgs21x1QwyZcpvxt9NS09PlsPAAAAAElFTkSuQmCC&logoWidth=14)](https://huggingface.co/spaces/teelinsan/aclpubcheck?duplicate=true)")
 
+    button.click(upload_file, [file_output, dropdown], out)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
