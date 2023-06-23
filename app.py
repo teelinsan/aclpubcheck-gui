@@ -1,5 +1,6 @@
 import gradio as gr
 import re
+import os
 import subprocess
 import argparse
 
@@ -31,12 +32,26 @@ def to_html(document):
     formatted_document = '<br>'.join(formatted_lines)
     return formatted_document
 
+def add_images(file_name):
+    html = '<div align="center">'
+    for file in os.listdir("."):
+        if file.startswith(f"errors-{file_name}") and file.endswith(".png"):
+            html += f'<img src="file/{file}">'
+    html += '</div>'
+    return html
+
+def clear_cached_images(file_name):
+    for file in os.listdir("."):
+        if file.startswith(f"errors-{file_name}") and file.endswith(".png"):
+            os.remove(file)
 
 def upload_file(file, paper_type):
-    file_name = file.name.replace(" ", "\ ")
-    command = f"python3 aclpubcheck-main/aclpubcheck/formatchecker.py --paper_type {paper_type} {file_name}"
+    file_name_cmd = file.name.replace(" ", "\ ")
+    file_name = os.path.basename(file.name).split(".")[0]
+    clear_cached_images(file_name)
+    command = f"python3 aclpubcheck-main/aclpubcheck/formatchecker.py --paper_type {paper_type} {file_name_cmd}"
     out = subprocess.run(command, shell=True, stdout=subprocess.PIPE, text=True, stderr=subprocess.STDOUT)
-    return to_html(remove_color_codes(out.stdout))
+    return to_html(remove_color_codes(out.stdout)) + add_images(file_name)
 
 
 with gr.Blocks() as demo:
@@ -47,7 +62,7 @@ with gr.Blocks() as demo:
         </div>
     """
     gr.HTML(header)
-    gr.Markdown("Drop or upload your paper here to have it checked for [ACL conferences](https://www.aclweb.org/) guidelines.")
+    gr.Markdown("Drop or upload your paper here to have it checked for [*ACL conferences](https://www.aclweb.org/) guidelines.")
     dropdown = gr.Dropdown(
         ["long", "short", "demo", "other"], label="Paper type", value="long"
     )
