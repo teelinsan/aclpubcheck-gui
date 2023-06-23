@@ -45,9 +45,16 @@ def clear_cached_images(file_name):
         if file.startswith(f"errors-{file_name}") and file.endswith(".png"):
             os.remove(file)
 
+def get_filename(file):
+    file_name = os.path.basename(file).split(".")[0]
+    if "_" in file_name:
+        # apparently aclpubcheck doesn't like underscores in filenames
+        file_name = file_name.split("_")[0]
+    return file_name
+
 def upload_file(file, paper_type):
     file_name_cmd = file.name.replace(" ", "\ ")
-    file_name = os.path.basename(file.name).split(".")[0]
+    file_name = get_filename(file.name)
     clear_cached_images(file_name)
     command = f"python3 aclpubcheck-main/aclpubcheck/formatchecker.py --paper_type {paper_type} {file_name_cmd}"
     out = subprocess.run(command, shell=True, stdout=subprocess.PIPE, text=True, stderr=subprocess.STDOUT)
