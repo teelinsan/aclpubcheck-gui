@@ -1,7 +1,7 @@
 # 📝 ACL Pubcheck Graphical User Interface
 
 ACL Pubcheck GUI is a minimal graphical user interface for the [ACL Pubcheck tool](https://github.com/acl-org/aclpubcheck) made with [gradio](https://github.com/gradio-app/gradio).
-The tool allows you to check the compliance of your paper with the [ACL conferences](https://www.aclweb.org/) guidelines by simply drag and drop your pdf file on the interface.
+The tool allows you to check the compliance of your paper with the [*ACL conferences](https://www.aclweb.org/) guidelines by simply drag and drop your pdf file on the interface.
 
 ## Usage
 The tool is available online on [Hugging Face Spaces](https://huggingface.co/spaces/teelinsan/aclpubcheck). You can access it by clicking on the button or image below.
