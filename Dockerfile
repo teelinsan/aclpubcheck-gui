@@ -31,7 +31,7 @@ RUN cd aclpubcheck-main
 RUN pip install -e ./aclpubcheck-main
 
 
-RUN pip install gradio==3.34.0
+RUN pip install gradio==3.48.0
 
 
 EXPOSE 7860
